@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0 auto;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background-color: bisque;
+        }
+        form{
+            background-color: #F0FFFF;
+            padding: 5%;
+            border: 2px solid rgb(160, 160, 160);
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px 2px rgb(160, 160, 160);
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        input[type="submit"]{
+            padding: 2% 15%;
+            background-color: lightgreen;
+            border: 2px solid lightgreen;
+            transition: 0.2s ease;
+            &:hover{
+                border: 2px solid rgb(160, 160, 160);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido al Register</h1>
+    <form action="./register.php" method="post">
+        <label for="nombreUsr">Nombre de Usuario: <input type="text" name="nombreUsr" id="nombreUsr" required></label><br>
+        <label for="passwdUsr">Contraseña: <input type="password" name="passwdUsr" id="passwdUsr" required></label><br>
+        <input type="submit" value="Register">
+    </form>
+    <a href="./index.html">Loguearse</a>
+</body>
+</html>
