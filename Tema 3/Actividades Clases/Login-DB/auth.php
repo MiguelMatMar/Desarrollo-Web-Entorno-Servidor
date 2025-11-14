@@ -4,7 +4,7 @@
     if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         $nombreUsr = $_POST['nombreUsr'];
-        $passwdUsr = md5($_POST['passwdUsr']);
+        $passwdUsr = hash('sha512',$_POST['passwdUsr']);
 
         require_once("./db.php");
   
