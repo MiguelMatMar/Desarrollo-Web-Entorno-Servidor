@@ -1,37 +1,24 @@
 <?php
     session_start();
 
-    $productos = [
-        1 => ['id' => 1, 'nombre' => 'Espada Élfica', 'precio' => 120],
-        2 => ['id' => 2, 'nombre' => 'Armadura de Acero', 'precio' => 300],
-        3 => ['id' => 3, 'nombre' => 'Poción de Salud', 'precio' => 50]
-    ];
+    function agregarAlCarrito($id_producto, $cantidad = 1) { // Función para agregar al carrito usando cookies
+        $carrito = isset($_COOKIE['carrito']) ? json_decode($_COOKIE['carrito'], true) : []; // Decodificar cookie existente o iniciar array vacío si no existe
 
-    $id = $_GET['id'] ?? null;
-
-    if ($id && isset($productos[$id])) {
-        $producto = $productos[$id];
-
-        // Si no existe el carrito, se crea
-        if (!isset($_SESSION['carrito'])) {
-            $_SESSION['carrito'] = [];
+        if (isset($carrito[$id_producto])) {
+            $carrito[$id_producto]['cantidad'] += $cantidad;
+        } else {
+            $carrito[$id_producto] = ['cantidad' => $cantidad];
         }
 
-        // Buscar si el producto ya existe en el carrito
-        $encontrado = false;
-        foreach ($_SESSION['carrito'] as &$item) { // Paso por valor para modificarlo
-            if ($item['id'] == $id) {
-                $item['cantidad']++;
-                $encontrado = true;
-                break;
-            }
-        }
+        setcookie('carrito', json_encode($carrito), time() + 86400, "/"); // Guardar cookie actualizada
+    }
 
-        // Si no estaba en el carrito, se añade
-        if (!$encontrado) {
-            $producto['cantidad'] = 1;
-            $_SESSION['carrito'][] = $producto;
-        }
+    // Obtener parámetros (por GET o POST)
+    $id = isset($_REQUEST['id']) ? intval($_REQUEST['id']) : null; // ID del producto a agregar
+    $cantidad = isset($_REQUEST['cantidad']) ? intval($_REQUEST['cantidad']) : 1; // Cantidad a agregar (por defecto 1)
+
+    if ($id !== null) { // Si la ID es válida, agregar al carrito
+        agregarAlCarrito($id, $cantidad);
     }
 
     header("Location: carrito.php");

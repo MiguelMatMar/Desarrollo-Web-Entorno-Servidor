@@ -1,6 +1,6 @@
 <?php
     session_start();
-    unset($_SESSION['carrito']);
+    setcookie('carrito', '', time() - 3600, "/"); // Elimina la cookie del carrito estableciendo una fecha de expiración pasada
     header("Location: carrito.php");
     exit;
 ?>

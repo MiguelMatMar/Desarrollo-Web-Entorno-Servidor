@@ -1,12 +1,17 @@
 <?php
     session_start();
 
-    $id = $_GET['id'] ?? null;
+    function eliminarDelCarrito($id_producto) {
+        $carrito = isset($_COOKIE['carrito']) ? json_decode($_COOKIE['carrito'], true) : [];
+        if (isset($carrito[$id_producto])) {
+            unset($carrito[$id_producto]);
+            setcookie('carrito', json_encode($carrito), time() + 86400, "/");
+        }
+    }
 
-    if ($id && isset($_SESSION['carrito'])) {
-        $_SESSION['carrito'] = array_filter($_SESSION['carrito'], function($item) use ($id) {
-            return $item['id'] != $id;
-        });
+    $id = isset($_REQUEST['id']) ? intval($_REQUEST['id']) : null;
+    if ($id !== null) {
+        eliminarDelCarrito($id);
     }
 
     header("Location: carrito.php");
