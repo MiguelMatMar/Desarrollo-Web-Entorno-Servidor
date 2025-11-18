@@ -1,0 +1,4 @@
+Esta página registra y loguea usuarios con la base de datos, muestra productos, crea y añade cookies para el carrito, 
+también usa sesiones para la información del usuario. 
+Lo que aún no he puesto es el control de errores con try/catch. 
+Tambien un usuario puede consultar sus pedidos.
