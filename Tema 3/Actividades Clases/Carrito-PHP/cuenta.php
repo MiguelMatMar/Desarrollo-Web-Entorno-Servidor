@@ -55,7 +55,7 @@ if ($logged) {
             <ul>
                 <?php foreach ($pedidos as $p) { ?>
                     <li>
-                        Pedido #<?php echo intval($p['id']); ?> - Total: <?php echo $p['total']; ?> € - Fecha: <?php echo $p['fecha']; ?>
+                        <?php echo " Pedido #". intval($p['id']) . "Total: ". $p['total']. " € -". " Fecha: ". $p['fecha']; ?>
                         - <a href="cuenta.php?pedido=<?php echo intval($p['id']); ?>">Ver detalles</a> 
                     </li>
                 <?php } ?>
