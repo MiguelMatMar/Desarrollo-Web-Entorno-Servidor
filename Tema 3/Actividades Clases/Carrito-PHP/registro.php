@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    if (strlen($password_raw) < 6) {
+    if (strlen($password_raw) < 6) { // Validacion de la longitud de la contraseña, por si se introduce una muy facil de robar
         echo "La contraseña debe tener al menos 6 caracteres";
         exit;
     }
@@ -19,11 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once 'db.php';
     $conn = $db;
 
-    if (!isset($conn) || !$conn) {
+    if (!isset($conn) || !$conn) { // Si la conexion no existe o nos ha devuelto falso entonces mostramos error
         die("Error de conexión: " . mysqli_connect_error());
     }
 
-    // Comprobar si ya existe el email
+    // Comprobar si ya existe el id del usuario filtrando por email para no insertar usuarios duplicados 
     $stmt = mysqli_prepare($conn, "SELECT id FROM usuarios WHERE email = ?");
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     mysqli_stmt_close($stmt);
 
-    // Insertar usuario nuevo
+    // Insertar usuario nuevo si no existe
     $stmt = mysqli_prepare($conn, "INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)");
     if (!$stmt) {
         die("Error en la preparación: " . mysqli_error($conn));
@@ -45,10 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nuevo_id = mysqli_insert_id($conn);
         mysqli_stmt_close($stmt);
         session_start();
-        $_SESSION['usuario_id'] = $nuevo_id;
+        $_SESSION['usuario_id'] = $nuevo_id; // Si se inserta entonces guardamos el id del usuario
         header("Location: cuenta.php");
         exit;
-    } else {
+    } else { // Sino pues devolvemos el error
         $err = mysqli_stmt_error($stmt);
         mysqli_stmt_close($stmt);
         echo "Error al registrar el usuario: " . $err;
@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Registro</title>
 </head>
 <body>
+    <h1>Registro</h1>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
         <div>
             <label for="nombre">Nombre</label><br>

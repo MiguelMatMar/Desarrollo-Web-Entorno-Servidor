@@ -40,7 +40,7 @@
         return $producto;
     }
 
-    function crearPedido($db, $usuario_id, $total) {
+    function crearPedido($db, $usuario_id, $total) { // Inserta en los pedidos el ID del usuario y el total del pedido
         $stmt = mysqli_prepare($db, "INSERT INTO pedidos (usuario_id, total) VALUES (?, ?)");
         if (!$stmt){ 
             return false;
@@ -56,7 +56,7 @@
         return $pedido_id;
     }
 
-    function insertarDetallePedido($db, $pedido_id, $producto_id, $cantidad, $precio) {
+    function insertarDetallePedido($db, $pedido_id, $producto_id, $cantidad, $precio) { // Inserta los pedidos de los productos que ha hecho el usuario y el id del pedido en concreto
         $stmt = mysqli_prepare($db, "INSERT INTO pedido_detalle (pedido_id, producto_id, cantidad, precio) VALUES (?, ?, ?, ?)");
         if (!$stmt){ 
             return false;
@@ -67,7 +67,7 @@
         return $ok;
     }
 
-    function obtenerPedidosPorUsuario($db, $usuario_id) {
+    function obtenerPedidosPorUsuario($db, $usuario_id) { // Obtiene los pedidos que ha hecho el usuario, solamente el pedido no los detalles
         $stmt = mysqli_prepare($db, "SELECT * FROM pedidos WHERE usuario_id = ? ORDER BY fecha DESC");
         if (!$stmt){ 
             return false;
@@ -84,7 +84,7 @@
         return $pedidos;
     }
 
-    function obtenerDetallePedido($db, $pedido_id) {
+    function obtenerDetallePedido($db, $pedido_id) { // Obtenemos los detalles de cada pedido que ha hecho el cliente
         $stmt = mysqli_prepare($db, "SELECT pd.*, p.nombre FROM pedido_detalle pd LEFT JOIN productos p ON pd.producto_id = p.id WHERE pd.pedido_id = ?");
         if (!$stmt) {
             return false;

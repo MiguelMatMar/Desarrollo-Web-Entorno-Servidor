@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    function eliminarDelCarrito($id_producto) {
+    function eliminarDelCarrito($id_producto) { // Para eliminar un producto del carrito segun el id del producto en el array asociativo de la cookie
         $carrito = isset($_COOKIE['carrito']) ? json_decode($_COOKIE['carrito'], true) : [];
         if (isset($carrito[$id_producto])) {
             unset($carrito[$id_producto]);
@@ -11,7 +11,7 @@
 
     $id = isset($_REQUEST['id']) ? intval($_REQUEST['id']) : null;
     if ($id !== null) {
-        eliminarDelCarrito($id);
+        eliminarDelCarrito($id); // Llamamos a la funcion 
     }
 
     header("Location: carrito.php");

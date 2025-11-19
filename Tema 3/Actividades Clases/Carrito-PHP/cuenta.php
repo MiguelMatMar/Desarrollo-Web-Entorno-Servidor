@@ -23,10 +23,11 @@ if ($logged) {
 <body>
     <h1>Mi cuenta</h1>
     <p><a href="index.php">Tienda</a> | <a href="carrito.php">Ver carrito</a>
-    <?php if ($logged) { ?> | <a href="logout.php">Cerrar sesión</a><?php } ?>
+    <?php // Si el usuario esta logueado que le muestre para cerrar sesion
+    if ($logged) { ?> | <a href="logout.php">Cerrar sesión</a><?php } ?>
     </p>
 
-    <?php if (!$logged) { ?>
+    <?php if (!$logged)  {  // Si no esta logueado que le muestre los formularios de inicio o registro?>
         <h2>Acceder</h2>
         <form method="post" action="login.php">
             <label>Email</label><br>
@@ -46,11 +47,11 @@ if ($logged) {
             <input type="password" name="password" required minlength="6"><br>
             <button type="submit">Registrarse</button>
         </form>
-    <?php } else { ?>
+    <?php } else { // Si esta logueado entoncemos comprobamos si ha hecho pedidos ?>
         <h2>Tus pedidos</h2>
-        <?php if (empty($pedidos)) {  ?> 
+        <?php if (empty($pedidos)) {   // Si hacemos la consulta y los pedidos estan vacios entonces le devolvemos que no se ha realizado pedidos todavia?> 
             <p>No has realizado pedidos todavía.</p>
-        <?php } else { ?>
+        <?php } else { // Si si existen los pedidos entonces se lo mostramos ?>
             <ul>
                 <?php foreach ($pedidos as $p) { ?>
                     <li>
@@ -61,9 +62,9 @@ if ($logged) {
             </ul>
         <?php } ?>
 
-        <?php if ($ver_pedido) {
+            <?php if ($ver_pedido) { // Si el usuario le da a un enlace para mostrar los detalles de un pedido entonces, se obtiene el id de un pedido y llamamos a la funcion  para obtener un array asociativo y mostrar los pedidos  
             $detalles = obtenerDetallePedido($db, $ver_pedido);
-            if ($detalles) {
+            if ($detalles) { // Si hay detalles del pedido entonces mostramos
                 echo '<h3>Detalles del pedido #' . intval($ver_pedido) . '</h3>';
                 echo '<ul>';
                 foreach ($detalles as $d) {

@@ -22,19 +22,16 @@
             ?>
                 <li> 
                     <?php // Mostramos detalles del producto en el carrito
-                        echo htmlspecialchars($producto['nombre']) ?> - <?php echo $producto['precio'] ?> × <?php echo $item['cantidad'] 
-                    ?> =
-                    <?php 
-                        echo $subtotal 
-                    ?> €
+                        echo htmlspecialchars($producto['nombre'])." - " 
+                    ?>  
+                    <?php echo $producto['precio']. " x ". $item['cantidad']. " = ". $subtotal. "€" ?>
                     <a href="eliminar.php?id=<?php echo $id ?>"> Eliminar </a>
                 </li>
             <?php } ?>
         </ul>
 
-        <p><strong>Total:</strong> <?php echo $total ?> €</p>
-        <a href="vaciar.php"> Vaciar carrito</a>
-        <a href="comprar.php"> Comprar</a>
+        <?php echo "<strong> Total: $total € </strong>" ?>
+        <p><a href="vaciar.php"> Vaciar carrito</a> <a href="comprar.php"> Comprar</a></p>
     <?php } ?>
 
     <br><a href="index.php"> Volver a la tienda</a>

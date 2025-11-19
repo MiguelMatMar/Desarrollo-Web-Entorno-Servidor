@@ -26,7 +26,7 @@
 
     // Insertar detalles
     foreach ($carrito as $id => $item) {
-        $producto = obtenerProductoPorId($db, intval($id));
+        $producto = obtenerProductoPorId($db, intval($id)); 
         $precio = $producto ? $producto['precio'] : 0;
         insertarDetallePedido($db, $pedido_id, intval($id), $item['cantidad'], $precio);
     }
