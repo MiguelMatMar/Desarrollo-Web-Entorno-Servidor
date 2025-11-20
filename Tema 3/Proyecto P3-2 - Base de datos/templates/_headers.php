@@ -1,4 +1,5 @@
 <!doctype html>
+<?php if (session_status() === PHP_SESSION_NONE) { @session_start(); } ?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -22,9 +23,11 @@
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="nav navbar-nav">
           <?php if (isset($_SESSION['user']['id'])): ?>
-            <li><a href="/orders.php"> Mis Pedidos </a></li>
-            <li><a href="/logout.php">Cerrar Sesion (<?= htmlspecialchars($_SESSION['user']['nombre']) ?>)</a></li>
-          <?php else: ?><li><a href="/login.php">Iniciar Sesion</a></li><?php endif; ?>
+            <li><a href="/pedidos.php"> Mis Pedidos </a></li>
+            <li><a href="/logout.php">Cerrar Sesión (<?= htmlspecialchars($_SESSION['user']['nombre'] ?? '') ?>)</a></li>
+          <?php else: ?>
+            <li><a href="/login.php">Iniciar Sesión</a></li>
+          <?php endif; ?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php

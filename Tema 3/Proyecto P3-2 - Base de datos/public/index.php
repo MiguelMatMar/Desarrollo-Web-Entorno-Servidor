@@ -40,7 +40,12 @@ switch ($action){
             break;
         }
         // Si el usuario no está logueado, redirigir al inicio
-        $user_id = isset($_SESSION['user_id']) ?  header('Location: /') : 1;
+        if(!isset($_SESSION['user']['id']) ) {
+            header('Location: /login.php');
+            exit;
+        }else{
+            $user_id = (int)$_SESSION['user']['id'];
+        }
         $total = 0.0;
         foreach ($cartItems as $pid => $qty) {
             if (!isset($products[$pid])) continue;
