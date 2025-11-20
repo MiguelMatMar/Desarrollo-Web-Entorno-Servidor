@@ -1,0 +1,15 @@
+.glyphicon-star {
+/* 1 */ color: goldenrod;
+font-size: 150%;
+}
+.glyphicon-star-empty {
+/* 2 */ color: darkgray;
+font-size: 150%;
+}
+/* 3 */ .product img {
+width: 100%;
+}
+/* 4 */ .price {
+font-size: 1.5rem;
+font-weight: bold;
+}
