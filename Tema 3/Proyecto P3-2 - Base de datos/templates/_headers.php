@@ -21,7 +21,10 @@
       </div>
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="nav navbar-nav">
-          <li><a href="/">Products</a></li>
+          <?php if (isset($_SESSION['user']['id'])): ?>
+            <li><a href="/orders.php"> Mis Pedidos </a></li>
+            <li><a href="/logout.php">Cerrar Sesion (<?= htmlspecialchars($_SESSION['user']['nombre']) ?>)</a></li>
+          <?php else: ?><li><a href="/login.php">Iniciar Sesion</a></li><?php endif; ?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php

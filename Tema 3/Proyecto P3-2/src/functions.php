@@ -11,8 +11,7 @@
         return $s;
     }
     // --- DATOS DE PRODUCTOS (Listado 15-8) ---
-function getAllProducts(): array
-{
+function getAllProducts(): array{
   $products = [];
   $products['010'] = ['name' => 'Sandwich', 'description' => '...', 'price' => 1.00, 'stars' => 4, 'image' => 'peanut_butter.png'];
   $products['025'] = ['name' => 'Slice of cheesecake', 'description' => '...', 'price' => 2.00, 'stars' => 5, 'image' => 'chocolate_cheese_cake.png'];

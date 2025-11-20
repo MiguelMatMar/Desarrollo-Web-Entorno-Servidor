@@ -31,6 +31,39 @@ switch ($action){
         }
         displayCart();
         break;
+    case 'checkout':
+        // Create order from session cart
+        $cartItems = getShoppingCart();
+        $products = getAllProducts();
+        if (empty($cartItems)) {
+            displayCart();
+            break;
+        }
+        // Si el usuario no está logueado, redirigir al inicio
+        $user_id = isset($_SESSION['user_id']) ?  header('Location: /') : 1;
+        $total = 0.0;
+        foreach ($cartItems as $pid => $qty) {
+            if (!isset($products[$pid])) continue;
+            $total += $products[$pid]['price'] * $qty;
+        }
+        $pedido_id = crearPedido($user_id, $total);
+        if ($pedido_id === false) {
+            // failure creating order — show cart with message
+            $_SESSION['flash'] = 'Unable to create order. Please try again.';
+            displayCart();
+            break;
+        }
+        // insert order details
+        foreach ($cartItems as $pid => $qty) {
+            if (!isset($products[$pid])) continue;
+            $precio = $products[$pid]['price'];
+            insertarDetallePedido($pedido_id, (int)$pid, (int)$qty, (float)$precio);
+        }
+        // clear cart
+        unset($_SESSION['cart']);
+        $_SESSION['flash'] = "Order #$pedido_id created successfully.";
+        header('Location: /');
+        exit;
     
     default:
         displayProducts();

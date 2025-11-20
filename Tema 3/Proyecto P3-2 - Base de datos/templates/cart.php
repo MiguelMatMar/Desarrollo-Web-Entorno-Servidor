@@ -66,7 +66,9 @@
     <div class="col-md-6 text-right">
       <?php $total = number_format($total, 2); ?>
       <h4>Total: $ <?= $total ?></h4>
-      <button class="btn btn-success">Checkout</button>
+      <form action="/?action=checkout" method="post" style="display:inline-block;">
+        <button type="submit" class="btn btn-success">Checkout</button>
+      </form>
     </div>
   </div>
 <?php endif; ?>
