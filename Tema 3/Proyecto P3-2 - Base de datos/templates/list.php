@@ -14,7 +14,7 @@
         <h3><?= htmlspecialchars($product['name']) ?></h3>
         <p class="text-muted"><?= starsHtml($product['stars']) ?></p>
         <p class="small text-secondary"><?= htmlspecialchars($product['description']) ?></p>
-        <p class="lead">$<?= $price ?></p>
+        <p class="lead">€<?= $price ?></p>
         <p>
           <a href="/?action=addToCart&id=<?= urlencode($id) ?>" class="btn btn-primary" role="button">Add to cart</a>
           <a href="/?action=cart" class="btn btn-default">View cart</a>
