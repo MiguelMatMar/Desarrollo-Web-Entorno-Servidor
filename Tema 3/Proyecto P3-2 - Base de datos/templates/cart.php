@@ -37,7 +37,7 @@
             <strong><?= htmlspecialchars($product['name']) ?></strong>
             <div class="text-muted small"><?= htmlspecialchars($product['description']) ?></div>
           </td>
-          <td class="text-right">$ <?= $priceF ?></td>
+          <td class="text-right">€ <?= $priceF ?></td>
           <td class="text-center">
             <form action="/?action=changeCartQuantity&id=<?= urlencode($id) ?>" method="post" class="form-inline" style="display:inline-block;">
               <button type="submit" name="changeDirection" value="reduce" class="btn btn-default btn-xs" title="Reduce">
@@ -49,7 +49,7 @@
               </button>
             </form>
           </td>
-          <td class="text-right">$ <?= $subtotalF ?></td>
+          <td class="text-right">€ <?= $subtotalF ?></td>
           <td>
             <a href="/?action=removeFromCart&id=<?= urlencode($id) ?>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Remove</a>
           </td>
@@ -65,7 +65,7 @@
     </div>
     <div class="col-md-6 text-right">
       <?php $total = number_format($total, 2); ?>
-      <h4>Total: $ <?= $total ?></h4>
+      <h4>Total: € <?= $total ?></h4>
       <form action="/?action=checkout" method="post" style="display:inline-block;">
         <button type="submit" class="btn btn-success">Checkout</button>
       </form>
