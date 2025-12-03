@@ -20,7 +20,34 @@
 
 class CuentaBancaria {
     // --- TU CÓDIGO AQUÍ ---
-    
+    private $saldo;
+
+    // Constructor
+    public function __construct($monto = 0){
+        $this -> saldo = $monto;
+    }
+    // Metodos
+    public function depositar($monto){
+        if($monto > 0){
+            $this -> saldo += $monto;
+        }
+        return "Fallo de deposito";
+        
+    }
+    public function retirar($monto){
+        if($monto > 0){
+            if($this -> saldo > $monto){
+                $this -> saldo -= $monto;
+            }else{
+                return "Saldo insuficiente";
+            }
+        }else{
+            return "Monto negativo";
+        }
+    }
+    public function getSaldo(){
+        return $this->saldo;
+    }
     // ----------------------
 }
 
