@@ -79,20 +79,17 @@ echo $e->saludar() . PHP_EOL;           // Hola, soy María. Trabajo como Desarr
 echo $e->obtenerRol() . PHP_EOL;       // Empleado - Desarrolladora
 echo Persona::obtenerContador() . PHP_EOL; // 1
 
+# Interface
 
--- Interface -- 
-Una interface es solo una lista de métodos que una clase debe implementar.
-– No tiene código, solo la declaración de métodos
-– No puede tener propiedades (solo constantes)
-– Una clase puede implementar muchas interfaces
+Una interface es solo una lista de métodos que una clase debe implementar:
+- No tiene código, solo la declaración de métodos
+- No puede tener propiedades (solo constantes)
+- Una clase puede implementar muchas interfaces
 
-Cuándo usarla
-
+### Cuándo usarla
 Cuando quieres definir qué debe hacer una clase, sin decir cómo lo hace.
-```
 
 ```php
-<?php
 // archivo: interface_example.php
 
 interface Autenticable {
@@ -144,22 +141,22 @@ $s = new SistemaAuth();
 $s->login('admin', '1234');  // muestra audit
 echo $s->getToken() ? "Token OK\n" : "Sin token\n";
 
-```
--- Traits -- 
+# Traits
 
-Un trait es un paquete de métodos reutilizables que puedes “pegar” dentro de una clase.
-– Sí puede tener código
-– Sirve para reutilizar funciones
-– Una clase puede usar muchos traits
-– No crea relación de herencia
+Un trait es un paquete de métodos reutilizables que puedes “pegar” dentro de una clase:
+- Sí puede tener código
+- Sirve para reutilizar funciones
+- Una clase puede usar muchos traits
+- No crea relación de herencia
 
-Cuándo usarlo
-
+### Cuándo usarlo
 Cuando diferentes clases necesitan el mismo comportamiento, pero no tienen relación entre ellas.
 
-3.1 Trait simple con propiedad y método
+---
+
+## 3.1 Trait simple con propiedad y método
+
 ```php
-<?php
 // archivo: trait_simple.php
 
 trait Loggable {
@@ -178,62 +175,3 @@ trait Loggable {
     // Trait puede declarar métodos abstractos — obliga a la clase a implementarlos
     abstract public function getIdentificador(): string;
 }
-```
-### 3.2 Uso del trait en clases
-
-```php
-<?php
-// archivo: trait_use.php
-require_once 'trait_simple.php';
-
-class Servicio {
-    use Loggable;
-
-    public function getIdentificador(): string {
-        return 'Servicio#1';
-    }
-
-    public function ejecutar(): void {
-        $this->log("Ejecutando servicio {$this->getIdentificador()}");
-    }
-}
-
-$s = new Servicio();
-$s->ejecutar(); // [LOG] Ejecutando servicio Servicio#1
-```
-### 3.3 Conflictos entre traits y resolución (insteadof, as)
-
-```php
-<?php
-// archivo: trait_conflict.php
-
-trait A {
-    public function saludo() {
-        echo "Hola desde A\n";
-    }
-}
-
-trait B {
-    public function saludo() {
-        echo "Hola desde B\n";
-    }
-
-    public function despedida() {
-        echo "Adiós desde B\n";
-    }
-}
-
-class MiClase {
-    use A, B {
-        // Elegimos saludo() de A en lugar de B
-        A::saludo insteadof B;
-
-        // Creamos un alias para la versión de B
-        B::saludo as saludoDesdeB;
-    }
-}
-
-$obj = new MiClase();
-$obj->saludo();          // Hola desde A
-$obj->saludoDesdeB();    // Hola desde B
-$obj->despedida();       // Adiós desde B
