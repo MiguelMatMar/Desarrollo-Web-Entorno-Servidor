@@ -79,8 +79,8 @@ echo $e->saludar() . PHP_EOL;           // Hola, soy María. Trabajo como Desarr
 echo $e->obtenerRol() . PHP_EOL;       // Empleado - Desarrolladora
 echo Persona::obtenerContador() . PHP_EOL; // 1
 
-
--- Interface -- 
+```
+# Interface 
 Una interface es solo una lista de métodos que una clase debe implementar.
 – No tiene código, solo la declaración de métodos
 – No puede tener propiedades (solo constantes)
@@ -89,7 +89,7 @@ Una interface es solo una lista de métodos que una clase debe implementar.
 Cuándo usarla
 
 Cuando quieres definir qué debe hacer una clase, sin decir cómo lo hace.
-```
+
 
 ```php
 <?php
@@ -145,7 +145,7 @@ $s->login('admin', '1234');  // muestra audit
 echo $s->getToken() ? "Token OK\n" : "Sin token\n";
 
 ```
--- Traits -- 
+# Traits 
 
 Un trait es un paquete de métodos reutilizables que puedes “pegar” dentro de una clase.
 – Sí puede tener código
