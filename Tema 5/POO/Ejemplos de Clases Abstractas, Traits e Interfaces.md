@@ -89,6 +89,7 @@ Una interface es solo una lista de métodos que una clase debe implementar.
 Cuándo usarla
 
 Cuando quieres definir qué debe hacer una clase, sin decir cómo lo hace.
+```
 
 ```php
 <?php
@@ -143,7 +144,7 @@ $s = new SistemaAuth();
 $s->login('admin', '1234');  // muestra audit
 echo $s->getToken() ? "Token OK\n" : "Sin token\n";
 
-
+```
 -- Traits -- 
 
 Un trait es un paquete de métodos reutilizables que puedes “pegar” dentro de una clase.
@@ -177,6 +178,7 @@ trait Loggable {
     // Trait puede declarar métodos abstractos — obliga a la clase a implementarlos
     abstract public function getIdentificador(): string;
 }
+```
 ### 3.2 Uso del trait en clases
 
 ```php
@@ -198,7 +200,7 @@ class Servicio {
 
 $s = new Servicio();
 $s->ejecutar(); // [LOG] Ejecutando servicio Servicio#1
-
+```
 ### 3.3 Conflictos entre traits y resolución (insteadof, as)
 
 ```php
