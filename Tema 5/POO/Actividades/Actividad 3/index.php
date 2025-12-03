@@ -21,14 +21,34 @@
 
 class Vehiculo {
     // --- TU CÓDIGO AQUÍ ---
+
+    // Propiedades
+    private $marca;
+    private $modelo;
+
+    // Constructor
+    public function __construct($marca, $modelo){
+        $this -> marca = $marca;
+        $this-> modelo=$modelo;
+    }
+    // Metodos
+    public function mover(){
+        echo "El vehiculo se esta moviendo";
+    }
 }
 
 class Coche extends Vehiculo {
     // --- TU CÓDIGO AQUÍ ---
+    public function mover(){
+        echo "El coche conduce por la carretera";
+    }
 }
 
 class Moto extends Vehiculo {
     // --- TU CÓDIGO AQUÍ ---
+    public function mover(){
+        echo "La moto acelera rapidamente";
+    }
 }
 
 // --- ZONA DE PRUEBAS ---
