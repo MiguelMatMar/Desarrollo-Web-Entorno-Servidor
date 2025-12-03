@@ -17,13 +17,30 @@
 
 class Producto {
     // --- TU CÓDIGO AQUÍ ---
-    
+
     // Propiedades
-    
+    public $nombre;
+    public $stock;
+    public $precio;
     // Constructor
-    
+    public function __construct($nombre,$precio,$stock){
+        $this -> nombre = $nombre;
+        $this -> stock = $stock;
+        $this -> precio = $precio;
+    }
     // Métodos
-    
+    public function actualizarStock($cantidad){
+        if($cantidad> 0){
+            $this -> stock -= $cantidad;
+        }else if($cantidad < 0){
+            $this -> stock += $cantidad;
+        }else{
+            return "Error";
+        }
+    }
+    public function calcularValorTotal(){
+        return $this->stock * $this->precio;
+    }
     // ----------------------
 }
 
