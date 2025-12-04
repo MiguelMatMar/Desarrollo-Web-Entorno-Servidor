@@ -26,9 +26,7 @@ spl_autoload_register(function ($claseCompleta) {
     // 1. Reemplazamos el separador de namespace (\) por el separador de directorio (/)
     // 2. Añadimos la carpeta base ('src/')
     // 3. Añadimos la extensión '.php'
-    $archivo = $carpetaBase
-             . str_replace('\\', '/', $claseRelativa)
-             . '.php';
+    $archivo = $carpetaBase. str_replace('\\', '/', $claseRelativa). '.php';
 
     // Si el archivo existe, lo incluimos.
     if (file_exists($archivo)) {
