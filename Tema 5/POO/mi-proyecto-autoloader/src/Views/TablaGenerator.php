@@ -20,11 +20,10 @@ class TablaGenerator{
             // 2. Usamos el operador de concatenación (punto .) para unir strings
             // Abrimos la fila (<tr>) y la primera celda (<td>)
             $string .= "<tr>";
-            $string .= "<td style='background-color: #ffffffff; font-weight: bold;'>Fila $filas</td>";
 
             for ($columnas = 0; $columnas < 10; $columnas++) {
                 // 3. Añadimos las celdas de encabezado (<th>)
-                $string .= "<th> Col $columnas </th>";
+                $string .= "<th> F $filas, C $columnas </th>";
             }
 
             // 4. Cerramos la fila (</tr>), ya no hace falta el </td> extra.
