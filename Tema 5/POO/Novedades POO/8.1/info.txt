@@ -1,0 +1,11 @@
+Novedades
+
+Enumeraciones (Enums)
+
+Fibers (para concurrencia ligera)
+
+Readonly properties
+
+Array unpacking en strings-keyed arrays
+
+Intersección de tipos (Intersection Types)

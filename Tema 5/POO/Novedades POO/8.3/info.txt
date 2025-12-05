@@ -1,0 +1,9 @@
+Novedades
+
+Typed Class Constants
+
+Clonación profunda de propiedades readonly
+
+Nueva función json_validate()
+
+Mejoras en Randomizer

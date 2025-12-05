@@ -1,0 +1,9 @@
+Novedades
+
+Readonly classes
+
+True, False, Null como tipos
+
+Desaprobación de dynamic properties
+
+Fetch de constantes en enums

@@ -1,0 +1,9 @@
+Probables novedades
+
+Destructuring en objetos
+
+Funciones async / await (RFC en discusión)
+
+Mayor optimización del JIT
+
+Arreglos inmutables (frozen arrays)
