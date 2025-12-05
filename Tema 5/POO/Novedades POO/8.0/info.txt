@@ -1,14 +1,2 @@
-PHP 8.0 introdujo varias características importantes como argumentos con nombre, tipos de unión, la expresión
-match, el compilador JIT (Just-In-Time), promoción de propiedades de constructor y el operador nullsafe. Estas 
-mejoras agilizan el desarrollo, mejoran la seguridad y aumentan significativamente el rendimiento, especialmente con el compilador JIT
-
-Características clave
-
-    Argumentos con nombre: Permiten pasar argumentos a las funciones por nombre en lugar de depender del orden, lo que mejora la legibilidad del código.
-    Tipos de unión: Permiten especificar que un parámetro, propiedad o valor de retorno puede ser de múltiples tipos de datos (por ejemplo, int|string), eliminando la necesidad de anotaciones de tipo PHP Doc.
-    Expresión match: Una construcción más rápida y concisa que switch para evaluar una variable y devolver un valor basado en coincidencias.
-    Compilador JIT (Just-In-Time): Compila partes del código PHP durante la ejecución, lo que se traduce en una mejora significativa del rendimiento, especialmente en cargas de trabajo intensivas del procesador.
-    Promoción de propiedades de constructor: Permite declarar y asignar propiedades de una clase en el mismo lugar, haciendo el código más limpio y conciso.
-    Operador nullsafe: Un operador (?->) que permite encadenar llamadas a métodos de forma segura, evitando errores si alguna propiedad o método en la cadena devuelve null.
-    Atributos: Una alternativa nativa en PHP a las anotaciones de PHP Doc, utilizando una sintaxis de metadatos estructurados más legible (#[]).
-    Mejoras en el sistema de tipos y gestión de errores: Mayor consistencia en los errores de tipo y mejoras en la gestión general de errores
+Antes había que declarar propiedades y luego asignarlas en el constructor.
+Permite acceder a objetos sin comprobar si son null.

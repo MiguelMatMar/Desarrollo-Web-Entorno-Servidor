@@ -1,0 +1,8 @@
+| Versión | Novedad OOP                                                |
+| ------- | ---------------------------------------------------------- |
+| 8.0 | Constructor Property Promotion, Nullsafe operator          |
+| 8.1 | Enums, Fibers, Readonly properties                         |
+| 8.2 | Readonly classes, true/false/null types                    |
+| 8.3 | Typed class constants                                      |
+| 8.4 | Property Hooks                                             |
+| 8.5 | Object destructuring (propuesto), mejoras en inmutabilidad |

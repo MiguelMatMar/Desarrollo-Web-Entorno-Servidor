@@ -1,11 +1,2 @@
-Novedades
-
-Enumeraciones (Enums)
-
-Fibers (para concurrencia ligera)
-
-Readonly properties
-
-Array unpacking en strings-keyed arrays
-
-Intersección de tipos (Intersection Types)
+Evitamos constantes sueltas y valores inválidos.
+Las propiedades solo pueden escribirse una vez (en el constructor).

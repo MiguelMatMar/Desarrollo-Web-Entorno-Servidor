@@ -1,9 +1,1 @@
-Novedades
-
-Property Hooks (get, set)
-
-Clases sealed completamente maduras
-
-Funciones más estrictas en typing
-
-Mejoras en performance del motor
+Permiten ejecutar lógica cada vez que se lee o asigna una propiedad.
