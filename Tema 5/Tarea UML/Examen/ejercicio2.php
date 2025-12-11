@@ -78,11 +78,16 @@
 
     $cuenta1 = new cuentaCorriente('iban1','Jose',5000);
     $cuenta2 = new cuentaAhorro('iban2','Jose',3000);
-
+    $retirar = 73.53;
 
     echo "Cuenta 1 ". $cuenta1 -> getSaldo() . "<br>";
     echo "Cuenta 2 ". $cuenta2 -> getSaldo() . "<br>";
     
-    echo realizarTransferencia($cuenta1,$cuenta2,7100);
+    echo "Se esta intentando realizar una transferencia de $retirar<br> ";
+    echo  realizarTransferencia($cuenta1,$cuenta2,$retirar);
+   
+    echo "<br>Cuenta 1 ". $cuenta1 -> getSaldo() . "<br>";
+    echo "Cuenta 2 ". $cuenta2 -> getSaldo() . "<br>";
+    
     
 ?>
